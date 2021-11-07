@@ -12,7 +12,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let dat of datos" >
+      <tr *ngFor="let dat of datos | paginate: { itemsPerPage: 10, currentPage: p }">
         <td>{{dat.comuna}}</td>
         <td>{{dat.positivos_confirmados}}</td>
         <td>{{dat.pc}}</td>
@@ -23,6 +23,7 @@
       </tr>
     </tbody>
   </table>
+  <pagination-controls  (pageChange)="p = $event"  ></pagination-controls>
 </div>
 <ng-template #espera> esérando datos ...</ng-template>
 
